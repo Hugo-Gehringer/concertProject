@@ -39,6 +39,12 @@ class Hall
      */
     private $available;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=ConcertHall::class, inversedBy="halls")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $concertHall;
+
     public function __construct()
     {
         $this->shows = new ArrayCollection();
@@ -111,6 +117,18 @@ class Hall
     public function setAvailable(bool $available): self
     {
         $this->available = $available;
+
+        return $this;
+    }
+
+    public function getConcertHall(): ?ConcertHall
+    {
+        return $this->concertHall;
+    }
+
+    public function setConcertHall(?ConcertHall $concertHall): self
+    {
+        $this->concertHall = $concertHall;
 
         return $this;
     }
