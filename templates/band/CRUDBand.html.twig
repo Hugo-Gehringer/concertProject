@@ -1,0 +1,68 @@
+{% extends 'base.html.twig' %}
+
+
+
+
+{% block body %}
+    <table class="table" data-toggle="table" >
+        <thead class="thead-dark">
+        <tr>
+            <th>
+                nom du Groupe
+            </th>
+            <th>
+                Date Création
+            </th>
+            <th>
+                Style
+            </th>
+            <th>
+                nom du dernier Album
+            </th>
+            <th>
+                Membres
+            </th>
+            <th>
+                Actions
+            </th>
+        </tr>
+        </thead>
+    {% for band in bands %}
+            <tr>
+                <td>
+                    {{ band.name }}
+                </td>
+                <td>
+                    {{ band.yearOfCreation |date('Y') }}
+                </td>
+                <td>
+                    {{ band.style  }}
+                </td>
+                <td>
+                    {{ band.lastAlbumName }}
+                </td>
+                <td>
+                    {% for member in band.members %}
+                    {{ member.name }} {{ member.firstname }} /
+                    {% endfor %}
+                </td>
+                <td>
+                    <button  class=" btn btn-primary" style="background-color:red ">
+                        <a style="color: white" href="{{ path('band_delete', {id: band.id}) }}">SUPPRIMER</a>
+                    </button>
+                    <button  class=" btn btn-primary" style="background-color:blue ">
+                        <a style="color: white" href="{{ path('band_update', {id: band.id}) }}">MODIFIER</a>
+                    </button>
+                </td>
+            </tr>
+    {% endfor %}
+    </table>
+    <div>
+        <h3>
+        <button  class=" btn btn-secondary" style="background-color:green ">
+            <a style="color: white" href="{{ path('band_new') }}">Créer un nouveau Groupe</a>
+        </button>
+        </h3>
+    </div>
+
+{% endblock %}

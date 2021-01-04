@@ -1,0 +1,22 @@
+
+{% extends 'base.html.twig'  %}
+
+
+{% block body %}
+    <div class="container">
+        <h3> Voici tous les membres de groupe.</h3>
+        <div class="container">
+
+            {% for member in members %}
+                <div class="card" style="width: 18rem;">
+
+                <div class="card-body">
+                    <h2>
+                            <a href="{{ path('members_list', {id: member.id}) }}">{{ member.name|e }}</a>
+                    </h2>
+                </div>
+            </div>
+             {% endfor %}
+         </div>
+    <div>
+{% endblock %}

@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+
+
+
+{% block body %}
+    <table class="table" data-toggle="table" >
+        <thead class="thead-dark">
+        <tr>
+            <th>
+                nomGroupe
+            </th>
+            <th>
+                Date
+            </th>
+            <th>
+                Actions
+            </th>
+        </tr>
+        </thead>
+    {% for concert in concerts %}
+            <tr>
+                <td>
+                    {{ concert.band.name }}
+                </td>
+                <td>
+                    {{ concert.date |date('d-m-Y') }}
+                </td>
+                <td>
+                    <button  class=" btn btn-primary" style="background-color:red ">
+                        <a style="color: white" href="{{ path('concert_delete', {id: concert.id}) }}">SUPPRIMER</a>
+                    </button>
+                        <button  class=" btn btn-primary" style="background-color:blue ">
+                            <a style="color: white" href="{{ path('concert_update', {id: concert.id}) }}">MODIFIER</a>
+                    </button>
+                </td>
+            </tr>
+    {% endfor %}
+    </table>
+    <div>
+        <h3>
+        <button  class=" btn btn-secondary" style="background-color:green ">
+            <a style="color: white" href="{{ path('concert_new') }}">Créer un nouveau concert</a>
+        </button>
+        </h3>
+    </div>
+
+{% endblock %}

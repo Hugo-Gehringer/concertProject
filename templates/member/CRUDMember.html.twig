@@ -1,0 +1,60 @@
+{% extends 'base.html.twig' %}
+
+
+
+
+{% block body %}
+    <table class="table" data-toggle="table" >
+        <thead class="thead-dark">
+        <tr>
+            <th>
+                nom et prénom du Membre
+            </th>
+            <th>
+                Date de naissance
+            </th>
+            <th>
+                job
+            </th>
+            <th>
+                nom du groupe
+            </th>
+            <th>
+                Actions
+            </th>
+        </tr>
+        </thead>
+    {% for member in members %}
+            <tr>
+                <td>
+                    {{ member.name  }} {{ member.firstname }}
+                </td>
+                <td>
+                    {{ member.birthdate |date('Y') }}
+                </td>
+                <td>
+                    {{ member.job  }}
+                </td>
+                <td>
+                    {{ member.band.name }}
+                </td>
+                <td>
+                    <button  class=" btn btn-primary" style="background-color:red ">
+                        <a style="color: white" href="{{ path('member_delete', {id: member.id}) }}">SUPPRIMER</a>
+                    </button>
+                    <button  class=" btn btn-primary" style="background-color:blue ">
+                        <a style="color: white" href="{{ path('member_update', {id: member.id}) }}">MODIFIER</a>
+                    </button>
+                </td>
+            </tr>
+    {% endfor %}
+    </table>
+    <div>
+        <h3>
+        <button  class=" btn btn-secondary" style="background-color:green ">
+            <a style="color: white" href="{{ path('member_new') }}">Créer un nouveau Membre</a>
+        </button>
+        </h3>
+    </div>
+
+{% endblock %}

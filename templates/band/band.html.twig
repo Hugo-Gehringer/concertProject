@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="container">
+    <h1>Le groupe {{ band.name }} </h1>
+    <p>Composé de {{ band.members|length }} membres, qui sont :</p>
+
+    <div class="container">
+
+        <div class="card-deck">
+            {% for member in band.members %}
+
+                <div class="card">
+
+                    <div class="card-body">
+                        <h5 class="card-title">{{ member.name }} {{ member.firstname }}</h5>
+                        <p class="card-text">Né le {{ member.birthDate|date('d-m-Y') }}.</p>
+                    </div>
+                    <div class="card-footer"><small class="text-muted">{{ member.job }}</small>
+                    </div>
+                </div>
+            {% endfor %}
+        <h4>
+        <p class="card-text">Les dates des futures concerts du groupe :</p>
+        {% for concert in band.concerts|sort((a, b) => a.date <=> b.date) %}
+            {% if date() <concert.date  %}
+        <p class="card-text"><a href="{{ path('concert_show', {id: concert.id}) }}">{{ concert.date|date('d-m-Y') }}</a>
+        </p>
+            {% endif %}
+        {% endfor %}
+        </h4>
+        </div>
+    </div>
+
+
+{% endblock %}

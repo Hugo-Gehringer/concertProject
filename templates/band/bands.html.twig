@@ -1,0 +1,22 @@
+
+{% extends 'base.html.twig'  %}
+
+
+{% block body %}
+    <div class="container">
+        <h3> Plusieurs groupes se sont produits dans nos salles de concerts.</h3>
+        <div class="container">
+
+            {% for band in bands %}
+                <div class="card" style="width: 18rem;">
+
+                <div class="card-body">
+                    <h2>
+                            <a href="{{ path('band_show', {id: band.id}) }}">{{ band.name|e }}</a>
+                    </h2>
+                </div>
+            </div>
+             {% endfor %}
+         </div>
+    <div>
+{% endblock %}

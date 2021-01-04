@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+
+    <div class="container">
+
+        <div class="card">
+
+            <h2 class="card-title">{{ show.band.name }} </h2>
+            <div class="card-body">
+                <h3>
+                <p  class="card-text">Concert le  {{ show.date|date('d-m-Y') }} dans la salle de concert {{ show.hall.name }}.</p>
+                </h3>
+            </div>
+        </div>
+    </div>
+{% endblock %}

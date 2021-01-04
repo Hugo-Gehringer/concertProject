@@ -1,0 +1,24 @@
+
+{% extends 'base.html.twig'  %}
+
+
+{% block body %}
+    <div class="container">
+        <h3> Voici les concerts passées</h3>
+        <div class="card" style="width: 70rem;">
+            <div class="container">
+
+                <div class="card-body">
+
+                    {% for show in pastshows %}
+                    <H3>
+                     <div class="card-text"><a href="{{ path('concert_show', {id: show.id}) }}"> Le {{ show.date|date('d-m-Y') }} concert de {{ show.band.name }} </a>
+                     </div>
+                        {% endfor %}
+                    </H3>
+
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
