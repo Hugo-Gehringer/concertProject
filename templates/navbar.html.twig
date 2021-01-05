@@ -11,29 +11,30 @@
                 <a class="nav-link" href="/bands">Groupes</a>
                 </H4>
             </li>
-            {% if is_granted('ROLE_ADMIN') %}
-            <li class="nav-item active">
+            <li class="nav-item active" >
                 <H4>
-                <a class="nav-link" href="/concerts">Concerts</a>
+                    <a class="nav-link" href="/ancienConcerts">Ancien Concerts</a>
+                </H4>
+            </li>
+            {% if is_granted('ROLE_ADMIN') %}
+            <li class="nav-item active" >
+                <H4>
+                <a class="nav-link" style="color: red" href="/concerts">CONCERTS</a>
                 </H4>
             </li>
 
             <li class="nav-item active">
                 <H4>
-                    <a class="nav-link" href="/bandsCRUD">Bands</a>
+                    <a class="nav-link" style="color: red" href="/bandsCRUD">GROUPES</a>
                 </H4>
             </li>
             <li class="nav-item active">
                 <H4>
-                    <a class="nav-link" href="/members">Members</a>
+                    <a class="nav-link" style="color: red" href="/members">MEMBRES</a>
                 </H4>
             </li>
             {% endif %}
-            <li class="nav-item active">
-                <H4>
-                <a class="nav-link" href="/ancienConcerts">Ancien Concerts</a>
-                </H4>
-            </li>
+
         </ul>
             <ul class="nav navbar-nav navbar-right">
                 {% if  is_granted('IS_AUTHENTICATED_FULLY') %}
@@ -65,9 +66,3 @@
     </div>
 
 </nav>
-
-{% if is_granted('ROLE_ADMIN') %}
-    <li>
-        <a class="nav-link" href="/concerts">Concerts</a>
-    </li>
-{% endif %}
