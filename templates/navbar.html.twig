@@ -11,11 +11,13 @@
                 <a class="nav-link" href="/bands">Groupes</a>
                 </H4>
             </li>
+            {% if is_granted('ROLE_ADMIN') %}
             <li class="nav-item active">
                 <H4>
                 <a class="nav-link" href="/concerts">Concerts</a>
                 </H4>
             </li>
+
             <li class="nav-item active">
                 <H4>
                     <a class="nav-link" href="/bandsCRUD">Bands</a>
@@ -26,12 +28,46 @@
                     <a class="nav-link" href="/members">Members</a>
                 </H4>
             </li>
+            {% endif %}
             <li class="nav-item active">
                 <H4>
                 <a class="nav-link" href="/ancienConcerts">Ancien Concerts</a>
                 </H4>
             </li>
         </ul>
+            <ul class="nav navbar-nav navbar-right">
+                {% if  is_granted('IS_AUTHENTICATED_FULLY') %}
+
+                    <li class="nav-item active">
+                        <H4>
+                            <a class="nav-link" href="/update_user">Modifier son compte</a>
+                        </H4>
+                    </li>
+                    <li class="nav-item active">
+                        <H4>
+                            <a class="nav-link" href="/logout">Se Déconnecter</a>
+                        </H4>
+                    </li>
+                {% else %}
+                    <li class="nav-item active">
+                        <H4>
+                            <a class="nav-link" href="/login">Se Connecter</a>
+                        </H4>
+                    </li>
+                    <li class="nav-item active">
+                        <H4>
+                            <a class="nav-link" href="/register">Créer un compte</a>
+                        </H4>
+                    </li>
+                {% endif %}
+            </ul>
+
     </div>
 
 </nav>
+
+{% if is_granted('ROLE_ADMIN') %}
+    <li>
+        <a class="nav-link" href="/concerts">Concerts</a>
+    </li>
+{% endif %}

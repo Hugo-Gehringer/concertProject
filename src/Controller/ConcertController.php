@@ -11,6 +11,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
 class ConcertController extends AbstractController
 
@@ -96,6 +97,7 @@ class ConcertController extends AbstractController
      * @return Response
      *
      * @Route("/concertCreate/new", name="concert_new",methods={"GET","POST"})
+     * @isGranted("ROLE_ADMIN")
      */
     public function createConcert(Request $request): Response
     {
@@ -125,6 +127,7 @@ class ConcertController extends AbstractController
      * @param Concert $concert
      * @return Response
      * @Route ("/delete/{id}",name="concert_delete")
+     * @isGranted("ROLE_ADMIN")
      *
      */
     public function deleteConcert(Request $request,Concert $concert): Response
@@ -143,6 +146,7 @@ class ConcertController extends AbstractController
      * @return Response
      *
      * @Route("/concert/edit/{id}", name="concert_update",methods={"GET","POST"})
+     * @isGranted("ROLE_ADMIN")
      */
     public function updateConcert(Request $request,Concert $concert): Response
     {
