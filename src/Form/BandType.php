@@ -26,7 +26,7 @@ class BandType extends AbstractType
             ])
             ->add('yearOfCreation',DateType::class,[
                 'widget' =>'choice',
-                'format'=>'dd/MM/yyyy',
+                'format'=>'yyyy-MM-dd',
                 'required' => false,
             ])
             ->add('lastAlbumName',TextType::class,[

@@ -19,7 +19,7 @@ class ConcertType extends AbstractType
         $builder
             ->add('date',DateType::class,[
                 'widget' =>'choice',
-                'format'=>'dd/MM/yyyy',
+                'format'=>'yyyy-MM-dd',
 
             ])
             ->add('hall',EntityType::class,[

@@ -17,8 +17,6 @@ class ConcertFixtures extends Fixture implements DependentFixtureInterface
     public const show_2_1_KORN = 'a21';
     public const show_2_2_KORN = 'a22';
     public const show_2_3_KORN = 'a23';
-
-
     public function load(ObjectManager $manager)
     {
         $c1 = new Concert();
@@ -37,17 +35,17 @@ class ConcertFixtures extends Fixture implements DependentFixtureInterface
         $c5->setDate(2021-8-20);
 
 
-        $this->addReference(self::show_1_1_KORN, $c1);
-        $this->addReference(self::show_1_2_KORN, $c2);
-        $this->addReference(self::show_2_1_KORN, $c3);
-        $this->addReference(self::show_2_2_KORN, $c4);
-        $this->addReference(self::show_2_3_KORN, $c5);
+
 
         $manager->persist($c1);
 
         $manager->flush();
 
-
+        $this->addReference(self::show_1_1_KORN, $c1);
+        $this->addReference(self::show_1_2_KORN, $c2);
+        $this->addReference(self::show_2_1_KORN, $c3);
+        $this->addReference(self::show_2_2_KORN, $c4);
+        $this->addReference(self::show_2_3_KORN, $c5);
 
     }
 

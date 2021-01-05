@@ -37,7 +37,8 @@ class MemberType extends AbstractType
 
             ->add('birthdate',DateType::class,[
                 'widget' =>'choice',
-                'format'=>'dd/MM/yyyy',
+                'format'=>'yyyy-MM-dd',
+                'label'=>'Date de naissance'
 
             ])
 

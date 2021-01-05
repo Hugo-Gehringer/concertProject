@@ -32,7 +32,6 @@ class BandFixtures extends Fixture implements DependentFixtureInterface
             ->addMember($this->getReference(MemberFixtures::KORN_3))
             ->addMember($this->getReference(MemberFixtures::KORN_4))
             ->addMember($this->getReference(MemberFixtures::KORN_5))
-            ->addShow()
         ;
 
         $manager->persist($b1);

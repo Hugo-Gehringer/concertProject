@@ -12,7 +12,8 @@ class HallFixtures extends Fixture implements DependentFixtureInterface
 
 
 {
-
+    public const Hall1 = 'h1';
+    public const Hall2 = 'h2';
 
     public function load(ObjectManager $manager)
     {
@@ -36,12 +37,16 @@ class HallFixtures extends Fixture implements DependentFixtureInterface
         $manager->persist($h2);
 
         $manager->flush();
+
+        $this->addReference(self::Hall1, $h1);
+        $this->addReference(self::Hall2, $h2);
     }
 
     public function getDependencies()
     {
         return array(
             ConcertFixtures::class,
+            BandFixtures::class
         );
     }
 }
